@@ -13,6 +13,7 @@
 	background-color: rgba(0, 119, 255, 0.356);
 	width: fit-content;
 	height: fit-content;
+	user-select: none;
 }
 
 .grid-row {
@@ -43,4 +44,8 @@
 .grid-cell-content {
 	height: 100%;
 	width: 100%;
+}
+
+.grid-cell-content:hover {
+	background-color : red !important;
 }

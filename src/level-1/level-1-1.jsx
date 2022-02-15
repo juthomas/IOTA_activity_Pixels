@@ -8,8 +8,8 @@ import './level-1-1.css'
 
 function createDataGrid(data)
 {
-	let sizeX = 10;
-	let sizeY = 10;
+	let sizeX = 12;
+	let sizeY = 12;
 
 	const grid = Array.from(Array(sizeY).keys()).map(() => Array.from(Array(sizeX).keys()));
 	Array.from(Array(sizeY).keys()).forEach((i) => {
@@ -22,18 +22,19 @@ function createDataGrid(data)
 
 const CellContent = ({cellData, x, y, onChange}) => {
 
-	const updateCell = (x, y) => {
-
-
-	}
-	// const { value, initialState } = cellData.toJSON();
-	
 	return <div className='grid-cell-content' onClick={(e) => {
-		e.target.style.background = 'red';
+		// e.target.style.background = 'red';
 		console.log("cellData :", cellData)
-		onChange({x:x, y:y});
+		onChange({x:x, y:y, 
+			newValue: cellData.value == '0' ? '1' : '0',
+			initialState: !cellData.initialState
+		});
 		// cellData.set("value", 42);
-		}}>
+		}}
+		style={{
+			backgroundColor: cellData.initialState ? 'blue' : 'green'
+		}}
+		>
 		{cellData.value}
 	</div>
 }
@@ -119,29 +120,11 @@ const Level1 = ({
 			{/* </div> */}
 		<RenderGrid grid={grid} onChange={(value) => {
 			console.log("Change Value :", value)
-			
-			// let tmpgrid = grid;
 			const x = value.x;
 			const y = value.y;
-			// console.log("before",tmpgrid);
-			// tmpgrid = setIn(tmpgrid, [y, x], fromJS({value : '42', initialState : false}));
-			
-			
-			// printGrid(tmpgrid);
-			
 			let newarr = [...grid];
-			newarr[y][x] = {value : '42', initialState : false};
-			// setArrayOfInput(newarr);
+			newarr[y][x] = {value : value.newValue, initialState : value.initialState};
 			setGrid(newarr);
-	
-			
-			
-			// tmpgrid[value.x][value.y] = {value : '42', initialState : false};
-			// tmpgrid = tmpgrid.set('grid', { x, y });
-			// let cell = tmpgrid.getIn([x, y]);
-			// console.log("Cell :", cell);
-			// console.log("after",tmpgrid);
-			// printGrid(tmpgrid);
 			}}/>
 		</div>
 	);
