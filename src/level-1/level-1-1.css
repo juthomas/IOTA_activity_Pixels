@@ -1,0 +1,46 @@
+.activity-div {
+	width: 800px;
+	height: 600px;
+	background-color: rgba(255, 0, 0, 0.356);
+	/* width: auto;
+	height: auto; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.grid {
+	background-color: rgba(0, 119, 255, 0.356);
+	width: fit-content;
+	height: fit-content;
+}
+
+.grid-row {
+	display: flex;
+	align-items: center;
+	flex: 0;
+	width: auto; /* cell height * x */
+	border-bottom: 1px solid black;
+}
+.grid-row:first-child {
+	border-top: 1px solid black;
+}
+
+.grid-cell {
+	height: 2em;
+	width: 2em;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	border-right: 1px solid black;
+}
+
+.grid-cell:first-child {
+	border-left: 1px solid black;
+}
+
+.grid-cell-content {
+	height: 100%;
+	width: 100%;
+}
