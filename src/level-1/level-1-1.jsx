@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Set, List, setIn, fromJS } from 'immutable';
 import './level-1-1.css'
 // import Carousel from './Carousel';
 // import InputImage from './InputImage';
@@ -18,7 +17,7 @@ function createDataGrid(data)
 			grid[i][j] = {value : data, initialState : false};
 		})
 	})
-	return (fromJS(grid));
+	return (grid);
 }
 
 const CellContent = ({cellData, x, y, onChange}) => {
@@ -27,7 +26,7 @@ const CellContent = ({cellData, x, y, onChange}) => {
 
 
 	}
-	const { value, initialState } = cellData.toJSON();
+	// const { value, initialState } = cellData.toJSON();
 	
 	return <div className='grid-cell-content' onClick={(e) => {
 		e.target.style.background = 'red';
@@ -35,7 +34,7 @@ const CellContent = ({cellData, x, y, onChange}) => {
 		onChange({x:x, y:y});
 		// cellData.set("value", 42);
 		}}>
-		{value}
+		{cellData.value}
 	</div>
 }
 
@@ -72,7 +71,7 @@ const RenderGrid = ({
 }
 
 RenderGrid.propTypes = {
-	grid: PropTypes.object
+	grid: PropTypes.array
 }
 
 RenderGrid.defaultProps = {
@@ -101,8 +100,8 @@ const Level1 = ({
 		let text = ""
 		grid.map((row, y) => {
 			row.map((cell, x) => {
-					const { value, initialState } = cell.toJSON();
-						text += value + ' ';
+					// const { value, initialState } = cell.toJSON();
+						text += cell.value + ' ';
 					// console.log(cell)
 					
 					})
@@ -121,19 +120,28 @@ const Level1 = ({
 		<RenderGrid grid={grid} onChange={(value) => {
 			console.log("Change Value :", value)
 			
-			let tmpgrid = grid;
+			// let tmpgrid = grid;
 			const x = value.x;
 			const y = value.y;
-			console.log("before",tmpgrid);
-			printGrid(tmpgrid);
+			// console.log("before",tmpgrid);
+			// tmpgrid = setIn(tmpgrid, [y, x], fromJS({value : '42', initialState : false}));
+			
+			
+			// printGrid(tmpgrid);
+			
+			let newarr = [...grid];
+			newarr[y][x] = {value : '42', initialState : false};
+			// setArrayOfInput(newarr);
+			setGrid(newarr);
+	
+			
+			
 			// tmpgrid[value.x][value.y] = {value : '42', initialState : false};
 			// tmpgrid = tmpgrid.set('grid', { x, y });
-			tmpgrid = setIn(tmpgrid, [y, x], fromJS({value : '42', initialState : false}));
 			// let cell = tmpgrid.getIn([x, y]);
 			// console.log("Cell :", cell);
-			console.log("after",tmpgrid);
-			printGrid(tmpgrid);
-			setGrid(tmpgrid);
+			// console.log("after",tmpgrid);
+			// printGrid(tmpgrid);
 			}}/>
 		</div>
 	);
