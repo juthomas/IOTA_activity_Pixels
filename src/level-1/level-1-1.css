@@ -41,11 +41,15 @@
 	border-left: 1px solid black;
 }
 
+.grid-cell-selected {
+	background-color : rgb(195, 0, 255);
+}
+
 .grid-cell-content {
 	height: 100%;
 	width: 100%;
 }
 
 .grid-cell-content:hover {
-	background-color : red !important;
+	background-color : red;
 }

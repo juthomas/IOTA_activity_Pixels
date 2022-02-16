@@ -22,17 +22,13 @@ function createDataGrid(data)
 
 const CellContent = ({cellData, x, y, onChange}) => {
 
-	return <div className='grid-cell-content' onClick={(e) => {
+	return <div className={`grid-cell-content ${cellData.initialState ? "grid-cell-selected" : ""}`} onClick={(e) => {
 		// e.target.style.background = 'red';
 		console.log("cellData :", cellData)
 		onChange({x:x, y:y, 
 			newValue: cellData.value == '0' ? '1' : '0',
 			initialState: !cellData.initialState
 		});
-		// cellData.set("value", 42);
-		}}
-		style={{
-			backgroundColor: cellData.initialState ? 'blue' : 'green'
 		}}
 		>
 		{cellData.value}
