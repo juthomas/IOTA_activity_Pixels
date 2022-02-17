@@ -18,14 +18,16 @@
 .row-align {
 	display: flex;
 	align-items: center;
-	flex: 0;
+	/* flex: 1; */
 }
 
 .grid-row {
 	display: flex;
 	align-items: center;
-	flex: 0;
-	width: auto; /* cell height * x */
+	flex: 1;
+	justify-content: stretch;
+	width: 400px;
+	/*width: auto; /* cell height * x */
 	border-bottom: 1px solid black;
 }
 .row-align:first-child .grid-row{
@@ -35,9 +37,9 @@
 
 .grid-cell {
 	background-color: rgba(48, 72, 99, 0.562);
-
+	flex: 1;
 	height: 1em;
-	width: 1em;
+	/* width: 1em; */
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -60,7 +62,7 @@
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	width: 100%;
+	/* width: 100%; */
 }
 
 .grid-cell-content:hover {
