@@ -9,7 +9,7 @@ const PixelsGrid = ({ drawColNumber, grid, onChange, CellContent}) => {
 			{grid.map((row, y) => {
 				return (
 					<div className="row-align">
-					{drawColNumber ? <div style={{width:"2em", height:"1em"}}>{y+1}</div> : null}
+					{drawColNumber ? <div style={{width:"2em", fontSize:"0.5em"}}>{y+1}</div> : null}
 					<div key={y} className="grid-row">
 						{row.map((cell, x) => {
 							return (

@@ -13,17 +13,22 @@
 	width: fit-content;
 	height: fit-content;
 	user-select: none;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: stretch;
 }
 
 .row-align {
 	display: flex;
-	align-items: center;
-	/* flex: 1; */
+	align-items: stretch;
+	flex: 1;
 }
 
 .grid-row {
 	display: flex;
-	align-items: center;
+	align-items: stretch;
 	flex: 1;
 	justify-content: stretch;
 	width: 400px;
@@ -38,12 +43,12 @@
 .grid-cell {
 	background-color: rgba(48, 72, 99, 0.562);
 	flex: 1;
-	height: 1em;
+	/* height: 1em; */
 	/* width: 1em; */
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
+	align-items: stretch;
+	justify-content: stretch;
 	border-right: 1px solid black;
 }
 
@@ -57,11 +62,13 @@
 }
 
 .grid-cell-content {
+	flex: 1;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	height: 100%;
+	font-size: 0.5em;
+	/* height: 100%; */
 	/* width: 100%; */
 }
 
